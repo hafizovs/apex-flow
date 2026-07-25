@@ -1,0 +1,71 @@
+.afx-kanban-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  max-width: 320px;
+  flex: 1;
+  background: var(--afx-bg-panel);
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius);
+  min-height: 420px;
+  transition:
+    border-color var(--afx-transition),
+    box-shadow var(--afx-transition);
+}
+
+.afx-kanban-column--drag-over {
+  border-color: var(--afx-accent);
+  box-shadow: inset 0 0 0 1px var(--afx-accent), 0 0 16px rgba(0, 229, 255, 0.15);
+}
+
+.afx-kanban-column__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--afx-border);
+}
+
+.afx-kanban-column__header h2 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.afx-kanban-column__count {
+  font-family: var(--afx-font-mono);
+  font-size: 12px;
+  color: var(--afx-text-muted);
+  background: var(--afx-bg-deep);
+  border: 1px solid var(--afx-border);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.afx-kanban-column__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  overflow: auto;
+  flex: 1;
+}
+
+.afx-kanban-column__skeleton {
+  height: 84px;
+  border-radius: var(--afx-radius);
+  background: linear-gradient(
+    90deg,
+    var(--afx-bg-panel-elevated),
+    var(--afx-bg-deep),
+    var(--afx-bg-panel-elevated)
+  );
+  background-size: 200% 100%;
+  animation: afx-fade-in 1.2s ease infinite alternate;
+}
+
+@media (min-width: 1200px) {
+  .afx-kanban-column {
+    max-width: none;
+  }
+}

@@ -1,0 +1,33 @@
+<div class="afx-analytics">
+  <h2 class="afx-analytics__title">{{ t('analytics.title') }}</h2>
+
+  <div class="afx-analytics__kpis">
+    <article class="afx-kpi">
+      <span class="afx-kpi__label">{{ t('analytics.kpi.total') }}</span>
+      <strong class="afx-kpi__value">{{ summary().totalTasks }}</strong>
+    </article>
+    <article class="afx-kpi">
+      <span class="afx-kpi__label">{{ t('analytics.kpi.done') }}</span>
+      <strong class="afx-kpi__value">{{ summary().doneTasks }}</strong>
+    </article>
+    <article class="afx-kpi">
+      <span class="afx-kpi__label">{{ t('analytics.kpi.inProgress') }}</span>
+      <strong class="afx-kpi__value">{{ summary().inProgressTasks }}</strong>
+    </article>
+    <article class="afx-kpi">
+      <span class="afx-kpi__label">{{ t('analytics.kpi.completion') }}</span>
+      <strong class="afx-kpi__value">{{ summary().completionRate }}%</strong>
+    </article>
+  </div>
+
+  <div class="afx-analytics__charts">
+    <section class="afx-analytics__chart">
+      <h3>{{ t('analytics.chart.priorities') }}</h3>
+      <afx-bar-chart [stats]="priorityStats()" />
+    </section>
+    <section class="afx-analytics__chart">
+      <h3>{{ t('analytics.chart.burndown') }}</h3>
+      <afx-burndown-chart [points]="burndownPoints()" />
+    </section>
+  </div>
+</div>

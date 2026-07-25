@@ -1,0 +1,27 @@
+.afx-shell {
+  display: grid;
+  grid-template-columns: var(--afx-sidebar-width) 1fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--afx-bg-deep);
+}
+
+.afx-shell__main {
+  display: grid;
+  grid-template-rows: var(--afx-topbar-height) 1fr;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.afx-shell__outlet {
+  overflow: auto;
+  padding: 24px;
+}
+
+@media (max-width: 900px) {
+  .afx-shell {
+    grid-template-columns: 1fr;
+  }
+}

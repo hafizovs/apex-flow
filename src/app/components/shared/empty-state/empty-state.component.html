@@ -1,0 +1,11 @@
+<div class="afx-empty" [class.afx-empty--compact]="compact()">
+  <p class="afx-empty__title">{{ t(titleKey()) }}</p>
+  @if (descriptionKey()) {
+    <p class="afx-empty__desc">{{ t(descriptionKey()) }}</p>
+  }
+  @if (actionLabelKey()) {
+    <button type="button" class="afx-btn afx-btn--primary" (click)="action.emit()">
+      {{ t(actionLabelKey()) }}
+    </button>
+  }
+</div>

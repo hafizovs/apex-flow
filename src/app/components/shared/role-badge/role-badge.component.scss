@@ -1,0 +1,27 @@
+.afx-role-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--afx-radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.afx-role-badge[data-role='admin'] {
+  color: var(--afx-role-admin);
+  background: color-mix(in srgb, var(--afx-role-admin) 14%, transparent);
+  border-color: color-mix(in srgb, var(--afx-role-admin) 35%, transparent);
+}
+
+.afx-role-badge[data-role='manager'] {
+  color: var(--afx-role-manager);
+  background: color-mix(in srgb, var(--afx-role-manager) 14%, transparent);
+  border-color: color-mix(in srgb, var(--afx-role-manager) 35%, transparent);
+}
+
+.afx-role-badge[data-role='developer'] {
+  color: var(--afx-role-developer);
+  background: color-mix(in srgb, var(--afx-role-developer) 14%, transparent);
+  border-color: color-mix(in srgb, var(--afx-role-developer) 35%, transparent);
+}

@@ -1,0 +1,64 @@
+.afx-kanban {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.afx-kanban__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.afx-kanban__toolbar afx-kanban-filters {
+  flex: 1;
+}
+
+.afx-kanban__board {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  min-height: 480px;
+}
+
+.afx-kanban__error {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: var(--afx-danger);
+}
+
+.afx-kanban-ghost {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--afx-ghost-z);
+  pointer-events: none;
+  width: 260px;
+  padding: 12px;
+  border-radius: var(--afx-radius);
+  border: 1px solid var(--afx-accent);
+  background: var(--afx-bg-panel-elevated);
+  box-shadow: var(--afx-shadow-lift);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  will-change: transform;
+}
+
+.afx-kanban__create {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.afx-kanban__create-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}

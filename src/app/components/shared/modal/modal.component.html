@@ -1,0 +1,31 @@
+<div
+  class="afx-modal"
+  [class.afx-modal--open]="open()"
+  role="presentation"
+>
+  @if (open()) {
+    <div class="afx-modal__backdrop" (click)="onBackdropClick()"></div>
+    <div
+      #panel
+      class="afx-modal__panel"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-labelledby]="titleId"
+    >
+      <header class="afx-modal__header">
+        <h2 [id]="titleId" class="afx-modal__title">{{ title() }}</h2>
+        <button
+          type="button"
+          class="afx-btn afx-btn--ghost afx-modal__close"
+          (click)="onCloseClick()"
+          aria-label="Close"
+        >
+          ×
+        </button>
+      </header>
+      <div class="afx-modal__body">
+        <ng-content />
+      </div>
+    </div>
+  }
+</div>

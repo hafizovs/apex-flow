@@ -1,0 +1,44 @@
+@if (model(); as m) {
+  <div class="afx-burndown">
+    <svg
+      class="afx-burndown__svg"
+      [attr.viewBox]="m.viewBox"
+      role="img"
+      [attr.aria-label]="t('analytics.chart.aria.burndown')"
+    >
+      @for (tick of m.yTicks; track tick.label) {
+        <line
+          class="afx-burndown__grid"
+          x1="48"
+          x2="456"
+          [attr.y1]="tick.y"
+          [attr.y2]="tick.y"
+        />
+        <text class="afx-burndown__tick" [attr.x]="40" [attr.y]="tick.y + 4" text-anchor="end">
+          {{ tick.label }}
+        </text>
+      }
+      @if (m.areaPath) {
+        <path class="afx-burndown__area" [attr.d]="m.areaPath" />
+      }
+      @if (m.linePath) {
+        <path class="afx-burndown__line" [attr.d]="m.linePath" fill="none" />
+      }
+      @for (dot of m.dots; track dot.date) {
+        <circle
+          class="afx-burndown__dot"
+          [attr.cx]="dot.cx"
+          [attr.cy]="dot.cy"
+          r="4"
+        >
+          <title>{{ dot.date }}: {{ dot.remaining }}</title>
+        </circle>
+      }
+      @for (tick of m.xTicks; track tick.label + $index) {
+        <text class="afx-burndown__xtick" [attr.x]="tick.x" y="268" text-anchor="middle">
+          {{ tick.label }}
+        </text>
+      }
+    </svg>
+  </div>
+}

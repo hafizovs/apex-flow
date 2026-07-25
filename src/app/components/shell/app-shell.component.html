@@ -1,0 +1,13 @@
+<div class="afx-shell" [attr.data-theme]="ui.theme()">
+  <afx-sidebar />
+  <div class="afx-shell__main">
+    <afx-topbar />
+    <main class="afx-shell__outlet">
+      <router-outlet />
+    </main>
+  </div>
+  <afx-toast />
+  @if (ui.helpOpen()) {
+    <afx-help-drawer />
+  }
+</div>

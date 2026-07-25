@@ -1,0 +1,10 @@
+@if (message(); as msg) {
+  <div
+    class="afx-toast"
+    [class.afx-toast--error]="isError()"
+    role="status"
+    aria-live="polite"
+  >
+    {{ msg }}
+  </div>
+}

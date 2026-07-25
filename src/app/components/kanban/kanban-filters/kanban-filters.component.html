@@ -1,0 +1,29 @@
+<div class="afx-filters">
+  <label class="afx-field">
+    <span class="afx-field__label">{{ t('board.filter.assignee') }}</span>
+    <select
+      class="afx-select"
+      [value]="assigneeFilter()"
+      (change)="onAssignee($any($event.target).value)"
+    >
+      <option value="all">{{ t('board.filter.allAssignees') }}</option>
+      @for (a of assignees(); track a.id) {
+        <option [value]="a.id">{{ a.label }}</option>
+      }
+    </select>
+  </label>
+  <label class="afx-field">
+    <span class="afx-field__label">{{ t('board.filter.priority') }}</span>
+    <select
+      class="afx-select"
+      [value]="priorityFilter()"
+      (change)="onPriority($any($event.target).value)"
+    >
+      <option value="all">{{ t('board.filter.allPriorities') }}</option>
+      <option value="high">{{ t('priority.high') }}</option>
+      <option value="medium">{{ t('priority.medium') }}</option>
+      <option value="low">{{ t('priority.low') }}</option>
+    </select>
+  </label>
+  <button type="button" class="afx-btn" (click)="reset()">{{ t('board.filter.reset') }}</button>
+</div>

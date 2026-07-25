@@ -1,0 +1,112 @@
+<aside class="afx-detail" role="dialog" aria-modal="true" [attr.aria-label]="t('board.detail.title')">
+  <header class="afx-detail__header">
+    <h2>{{ task().title }}</h2>
+    <div class="afx-detail__header-actions">
+      <button type="button" class="afx-btn afx-btn--ghost" (click)="toggleEdit()">
+        {{ t('board.detail.edit') }}
+      </button>
+      <button type="button" class="afx-btn afx-btn--ghost" (click)="onClose()" [attr.aria-label]="t('board.detail.close')">
+        ×
+      </button>
+    </div>
+  </header>
+
+  <div class="afx-detail__body">
+    @if (editing()) {
+      <form class="afx-detail__form" [formGroup]="form" (ngSubmit)="save()">
+        <label class="afx-field">
+          <span class="afx-field__label">{{ t('board.detail.title') }}</span>
+          <input class="afx-input" formControlName="title" />
+        </label>
+        <label class="afx-field">
+          <span class="afx-field__label">{{ t('board.detail.description') }}</span>
+          <textarea class="afx-textarea" formControlName="description"></textarea>
+        </label>
+        <label class="afx-field">
+          <span class="afx-field__label">{{ t('board.detail.assignee') }}</span>
+          <select class="afx-select" formControlName="assigneeId">
+            @for (u of assignees(); track u.id) {
+              <option [value]="u.id">{{ u.displayName }}</option>
+            }
+          </select>
+        </label>
+        <label class="afx-field">
+          <span class="afx-field__label">{{ t('board.detail.priority') }}</span>
+          <select class="afx-select" formControlName="priority">
+            <option value="high">{{ t('priority.high') }}</option>
+            <option value="medium">{{ t('priority.medium') }}</option>
+            <option value="low">{{ t('priority.low') }}</option>
+          </select>
+        </label>
+        <label class="afx-field">
+          <span class="afx-field__label">{{ t('board.detail.tags') }}</span>
+          <input class="afx-input" formControlName="tags" />
+        </label>
+        <div class="afx-detail__actions">
+          <button type="button" class="afx-btn" (click)="toggleEdit()">{{ t('common.cancel') }}</button>
+          <button type="submit" class="afx-btn afx-btn--primary">{{ t('common.save') }}</button>
+        </div>
+      </form>
+    } @else {
+      <div class="afx-detail__section">
+        <afx-priority-badge [priority]="task().priority" />
+        <p class="afx-detail__assignee">{{ task().assigneeName }}</p>
+      </div>
+      <p class="afx-detail__desc">{{ task().description || '—' }}</p>
+      @if (task().tags.length) {
+        <div class="afx-detail__tags">
+          @for (tag of task().tags; track tag) {
+            <span>{{ tag }}</span>
+          }
+        </div>
+      }
+    }
+
+    <section class="afx-detail__log">
+      <h3>{{ t('board.detail.changeLog') }}</h3>
+      <ul>
+        @for (entry of changeLog(); track entry.id) {
+          <li>
+            <div class="afx-detail__log-head">
+              <strong>{{ entry.authorName }}</strong>
+              <time>{{ formatAt(entry.at) }}</time>
+            </div>
+            <p>{{ entry.message }}</p>
+            <code>{{ entry.field }}</code>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section class="afx-detail__comment">
+      <label class="afx-field">
+        <span class="afx-field__label">{{ t('board.detail.comment') }}</span>
+        <textarea
+          class="afx-textarea"
+          [value]="comment()"
+          (input)="comment.set($any($event.target).value)"
+          [placeholder]="t('board.detail.commentPlaceholder')"
+        ></textarea>
+      </label>
+      <button type="button" class="afx-btn afx-btn--primary" (click)="submitComment()">
+        {{ t('board.detail.addComment') }}
+      </button>
+    </section>
+
+    @if (canDelete()) {
+      <button type="button" class="afx-btn afx-btn--danger" (click)="requestDelete()">
+        {{ t('common.delete') }}
+      </button>
+    }
+  </div>
+</aside>
+
+<div class="afx-detail__backdrop" (click)="onClose()"></div>
+
+<afx-modal [open]="confirmOpen()" [title]="t('board.deleteConfirm')" (close)="cancelDelete()">
+  <p>{{ t('board.deleteConfirmBody') }}</p>
+  <div class="afx-detail__actions">
+    <button type="button" class="afx-btn" (click)="cancelDelete()">{{ t('common.cancel') }}</button>
+    <button type="button" class="afx-btn afx-btn--danger" (click)="confirmDelete()">{{ t('common.delete') }}</button>
+  </div>
+</afx-modal>

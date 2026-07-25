@@ -1,0 +1,31 @@
+<div class="afx-table-wrap">
+  <table class="afx-table">
+    <thead>
+      <tr>
+        @for (col of columns(); track col.key) {
+          <th scope="col" [attr.aria-sort]="ariaSort(col)">
+            @if (col.sortable) {
+              <button type="button" class="afx-table__sort" (click)="onSort(col)">
+                {{ col.label }}
+                @if (sortBy() === col.key) {
+                  <span aria-hidden="true">{{ sortDirection() === 'asc' ? '▲' : '▼' }}</span>
+                }
+              </button>
+            } @else {
+              {{ col.label }}
+            }
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rows(); track $index) {
+        <tr>
+          @for (col of columns(); track col.key) {
+            <td>{{ cellValue(row, col.key) }}</td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

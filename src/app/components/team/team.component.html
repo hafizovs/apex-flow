@@ -1,0 +1,166 @@
+<div class="afx-team">
+  <div class="afx-team__toolbar">
+    <h2>{{ t('team.title') }}</h2>
+    <div class="afx-team__controls">
+      <input
+        class="afx-input"
+        type="search"
+        [placeholder]="t('team.search')"
+        [value]="query().search"
+        (input)="onSearch($any($event.target).value)"
+      />
+      <select
+        class="afx-select"
+        [value]="query().roleFilter"
+        (change)="onRoleFilter($any($event.target).value)"
+        [attr.aria-label]="t('team.roleFilter')"
+      >
+        <option value="all">{{ t('team.allRoles') }}</option>
+        <option value="admin">{{ t('role.admin') }}</option>
+        <option value="manager">{{ t('role.manager') }}</option>
+        <option value="developer">{{ t('role.developer') }}</option>
+      </select>
+      <button type="button" class="afx-btn afx-btn--primary" (click)="openAdd()">
+        {{ t('team.addMember') }}
+      </button>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <div class="afx-team__loading">
+      <afx-loading-spinner />
+    </div>
+  } @else if (!(result()?.items?.length ?? 0)) {
+    <afx-empty-state
+      titleKey="team.empty"
+      descriptionKey="team.emptyHint"
+      actionLabelKey="team.addMember"
+      (action)="openAdd()"
+    />
+  } @else {
+    <div class="afx-table-wrap">
+      <table class="afx-table">
+        <thead>
+          <tr>
+            <th scope="col">
+              <button type="button" class="afx-table__sort" (click)="sort('email')">
+                {{ t('team.column.email') }}{{ sortMark('email') }}
+              </button>
+            </th>
+            <th scope="col">
+              <button type="button" class="afx-table__sort" (click)="sort('displayName')">
+                {{ t('team.column.name') }}{{ sortMark('displayName') }}
+              </button>
+            </th>
+            <th scope="col">
+              <button type="button" class="afx-table__sort" (click)="sort('role')">
+                {{ t('team.column.role') }}{{ sortMark('role') }}
+              </button>
+            </th>
+            <th scope="col">{{ t('team.column.status') }}</th>
+            <th scope="col">
+              <button type="button" class="afx-table__sort" (click)="sort('createdAt')">
+                {{ t('team.column.created') }}{{ sortMark('createdAt') }}
+              </button>
+            </th>
+            <th scope="col">{{ t('team.column.actions') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of result()!.items; track user.id) {
+            <tr>
+              <td>{{ user.email }}</td>
+              <td>{{ user.displayName }}</td>
+              <td>
+                <select
+                  class="afx-select afx-team__role-select"
+                  [value]="user.role"
+                  [disabled]="user.id === seedAdminId"
+                  (change)="onRoleChange(user, $any($event.target).value)"
+                >
+                  <option value="admin">{{ t('role.admin') }}</option>
+                  <option value="manager">{{ t('role.manager') }}</option>
+                  <option value="developer">{{ t('role.developer') }}</option>
+                </select>
+              </td>
+              <td>
+                <span
+                  class="afx-team__status"
+                  [class.afx-team__status--blocked]="user.isBlocked"
+                >
+                  {{ user.isBlocked ? t('team.blocked') : t('team.active') }}
+                </span>
+              </td>
+              <td>{{ formatCreated(user.createdAt) }}</td>
+              <td class="afx-team__actions">
+                <button type="button" class="afx-btn afx-btn--ghost" (click)="openEdit(user)">
+                  {{ t('common.edit') }}
+                </button>
+                <button
+                  type="button"
+                  class="afx-btn afx-btn--ghost"
+                  [disabled]="user.id === seedAdminId"
+                  (click)="toggleBlock(user)"
+                >
+                  {{ user.isBlocked ? t('team.unblock') : t('team.block') }}
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="afx-team__pager">
+      <button
+        type="button"
+        class="afx-btn"
+        [disabled]="query().page <= 1"
+        (click)="goPage(query().page - 1)"
+      >
+        {{ t('team.pagePrev') }}
+      </button>
+      <div class="afx-team__pages">
+        @for (p of pages(); track p) {
+          <button
+            type="button"
+            class="afx-btn afx-btn--ghost"
+            [class.afx-team__page--active]="p === query().page"
+            (click)="goPage(p)"
+          >
+            {{ p }}
+          </button>
+        }
+      </div>
+      <button
+        type="button"
+        class="afx-btn"
+        [disabled]="query().page >= (result()?.totalPages ?? 1)"
+        (click)="goPage(query().page + 1)"
+      >
+        {{ t('team.pageNext') }}
+      </button>
+      <label class="afx-team__page-size">
+        <span>{{ t('team.pageSize') }}</span>
+        <select
+          class="afx-select"
+          [value]="query().pageSize"
+          (change)="onPageSize($any($event.target).value)"
+        >
+          @for (size of pageSizeOptions; track size) {
+            <option [value]="size">{{ size }}</option>
+          }
+        </select>
+      </label>
+    </div>
+  }
+</div>
+
+@if (modalMode(); as mode) {
+  <afx-team-member-modal
+    [mode]="mode"
+    [user]="editingUser()"
+    (close)="closeModal()"
+    (saved)="onModalSaved()"
+  />
+}

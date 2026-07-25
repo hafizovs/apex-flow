@@ -1,0 +1,55 @@
+@if (model(); as m) {
+  <div class="afx-bar-chart">
+    <svg
+      class="afx-bar-chart__svg"
+      [attr.viewBox]="m.viewBox"
+      role="img"
+      [attr.aria-label]="t('analytics.chart.aria.bar')"
+    >
+      @for (tick of m.yTicks; track tick.label) {
+        <line
+          class="afx-bar-chart__grid"
+          [attr.x1]="48"
+          [attr.x2]="456"
+          [attr.y1]="tick.y"
+          [attr.y2]="tick.y"
+        />
+        <text class="afx-bar-chart__tick" [attr.x]="40" [attr.y]="tick.y + 4" text-anchor="end">
+          {{ tick.label }}
+        </text>
+      }
+      <line
+        class="afx-bar-chart__axis"
+        [attr.x1]="48"
+        [attr.x2]="456"
+        [attr.y1]="m.baselineY"
+        [attr.y2]="m.baselineY"
+      />
+      @for (bar of m.bars; track bar.priority) {
+        <rect
+          [attr.x]="bar.x"
+          [attr.y]="bar.y"
+          [attr.width]="bar.width"
+          [attr.height]="bar.height"
+          [attr.fill]="colorFor(bar.priority)"
+          rx="4"
+        >
+          <title>{{ t('priority.' + bar.priority) }}: {{ bar.count }}</title>
+        </rect>
+      }
+      @for (label of m.xLabels; track label.labelKey) {
+        <text class="afx-bar-chart__xlabel" [attr.x]="label.x" [attr.y]="label.y" text-anchor="middle">
+          {{ t(label.labelKey) }}
+        </text>
+      }
+    </svg>
+    <ul class="afx-bar-chart__legend">
+      @for (stat of stats(); track stat.priority) {
+        <li>
+          <span class="afx-bar-chart__swatch" [style.background]="colorFor(stat.priority)"></span>
+          {{ t(stat.labelKey) }} ({{ stat.count }})
+        </li>
+      }
+    </ul>
+  </div>
+}

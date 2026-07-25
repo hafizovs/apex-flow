@@ -1,0 +1,40 @@
+.afx-bar-chart__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.afx-bar-chart__grid {
+  stroke: var(--afx-border);
+  stroke-width: 1;
+}
+
+.afx-bar-chart__axis {
+  stroke: var(--afx-border-strong);
+  stroke-width: 1.5;
+}
+
+.afx-bar-chart__tick,
+.afx-bar-chart__xlabel {
+  fill: var(--afx-text-muted);
+  font-size: 11px;
+  font-family: var(--afx-font-mono);
+}
+
+.afx-bar-chart__legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--afx-text-muted);
+}
+
+.afx-bar-chart__swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 6px;
+}

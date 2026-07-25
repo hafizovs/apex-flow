@@ -1,0 +1,41 @@
+<article
+  class="afx-task-card"
+  [class.afx-task-card--dragging]="dragging()"
+  role="listitem"
+  tabindex="0"
+  [attr.data-task-id]="task().id"
+  (click)="onOpen()"
+  (keydown.enter)="onOpen()"
+>
+  <button
+    type="button"
+    class="afx-task-card__handle"
+    [attr.aria-label]="t('board.dragHandle')"
+    [attr.aria-grabbed]="dragging()"
+    (pointerdown)="onHandlePointerDown($event)"
+    (click)="$event.stopPropagation()"
+  >
+    ⋮⋮
+  </button>
+  <div class="afx-task-card__body">
+    <h3 class="afx-task-card__title">{{ task().title }}</h3>
+    <div class="afx-task-card__meta">
+      <afx-priority-badge [priority]="task().priority" />
+      <span class="afx-task-card__avatar" [attr.title]="task().assigneeName">
+        {{ initial(task().assigneeName) }}
+      </span>
+    </div>
+    @if (task().tags.length) {
+      <div class="afx-task-card__tags">
+        @for (tag of visibleTags(task()); track tag) {
+          <span class="afx-task-card__tag">{{ tag }}</span>
+        }
+        @if (extraTags(task()); as extra) {
+          @if (extra > 0) {
+            <span class="afx-task-card__tag">+{{ extra }}</span>
+          }
+        }
+      </div>
+    }
+  </div>
+</article>

@@ -1,0 +1,66 @@
+.afx-analytics__title {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.afx-analytics__kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.afx-kpi {
+  padding: 16px;
+  background: var(--afx-bg-panel);
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius);
+}
+
+.afx-kpi__label {
+  display: block;
+  font-size: 12px;
+  color: var(--afx-text-muted);
+  margin-bottom: 8px;
+}
+
+.afx-kpi__value {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: var(--afx-font-mono);
+  color: var(--afx-accent);
+}
+
+.afx-analytics__charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.afx-analytics__chart {
+  padding: 16px;
+  background: var(--afx-bg-panel);
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius);
+}
+
+.afx-analytics__chart h3 {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .afx-analytics__kpis {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .afx-analytics__charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .afx-analytics__kpis {
+    grid-template-columns: 1fr;
+  }
+}

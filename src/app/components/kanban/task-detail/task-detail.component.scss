@@ -1,0 +1,136 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: var(--afx-drawer-z);
+  pointer-events: none;
+}
+
+.afx-detail__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+  animation: afx-fade-in 200ms ease;
+}
+
+.afx-detail {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(420px, 100vw);
+  height: 100%;
+  background: var(--afx-bg-panel);
+  border-left: 1px solid var(--afx-border);
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  z-index: 1;
+  animation: afx-slide-up 200ms ease;
+}
+
+.afx-detail__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--afx-border);
+}
+
+.afx-detail__header h2 {
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.afx-detail__header-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.afx-detail__body {
+  padding: 18px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+}
+
+.afx-detail__form,
+.afx-detail__comment {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.afx-detail__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.afx-detail__section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.afx-detail__assignee {
+  color: var(--afx-text-muted);
+}
+
+.afx-detail__desc {
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.afx-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.afx-detail__tags span {
+  font-family: var(--afx-font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius-sm);
+  background: var(--afx-bg-deep);
+}
+
+.afx-detail__log h3 {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: var(--afx-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.afx-detail__log ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.afx-detail__log li {
+  padding: 10px;
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius-sm);
+  background: var(--afx-bg-deep);
+}
+
+.afx-detail__log-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.afx-detail__log-head time,
+.afx-detail__log code {
+  font-family: var(--afx-font-mono);
+  font-size: 11px;
+  color: var(--afx-text-muted);
+}

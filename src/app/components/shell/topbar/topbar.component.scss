@@ -1,0 +1,78 @@
+.afx-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--afx-topbar-height);
+  padding: 0 20px;
+  border-bottom: 1px solid var(--afx-border);
+  background: var(--afx-bg-panel);
+}
+
+.afx-topbar__title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.afx-topbar__spacer {
+  flex: 1;
+}
+
+.afx-topbar__user {
+  position: relative;
+}
+
+.afx-topbar__user-btn {
+  gap: 8px;
+}
+
+.afx-topbar__dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  min-width: 220px;
+  background: var(--afx-bg-panel-elevated);
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius);
+  box-shadow: var(--afx-shadow-lift);
+  z-index: 20;
+  padding: 8px;
+  animation: afx-slide-up 160ms ease;
+}
+
+.afx-topbar__profile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px 12px;
+  border-bottom: 1px solid var(--afx-border);
+  margin-bottom: 6px;
+}
+
+.afx-topbar__profile span {
+  font-size: 12px;
+  color: var(--afx-text-muted);
+  font-family: var(--afx-font-mono);
+}
+
+.afx-topbar__menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border: none;
+  background: transparent;
+  color: var(--afx-text);
+  border-radius: var(--afx-radius-sm);
+  cursor: pointer;
+}
+
+.afx-topbar__menu-item:hover {
+  background: var(--afx-accent-soft);
+}
+
+.afx-topbar__modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}

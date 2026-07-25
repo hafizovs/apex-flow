@@ -1,0 +1,83 @@
+<div class="afx-kanban">
+  <div class="afx-kanban__toolbar">
+    <afx-kanban-filters [assignees]="assigneeOptions()" />
+    <button type="button" class="afx-btn afx-btn--primary" (click)="openCreate()">
+      {{ t('board.newTask') }}
+    </button>
+  </div>
+
+  @if (loadError()) {
+    <div class="afx-kanban__error">
+      <p>{{ t('toast.error.generic') }}</p>
+      <button type="button" class="afx-btn" (click)="reload()">{{ t('board.retry') }}</button>
+    </div>
+  }
+
+  <div class="afx-kanban__board" role="region" [attr.aria-label]="t('board.title')">
+    @for (column of taskService.columns(); track column.id) {
+      <afx-kanban-column
+        [column]="column"
+        [tasks]="tasksForColumn(column)"
+        [dragOver]="dragOverColumnId() === column.id"
+        [draggingTaskId]="draggingTaskId()"
+        [loading]="taskService.isLoading()"
+        (taskOpen)="openDetail($event)"
+        (dragStart)="onDragStart($event)"
+      />
+    }
+  </div>
+
+  @if (ghostTask(); as ghost) {
+    @if (ghostTransform(); as transform) {
+      <div class="afx-kanban-ghost" [style.transform]="transform" aria-hidden="true">
+        <strong>{{ ghost.title }}</strong>
+        <afx-priority-badge [priority]="ghost.priority" />
+      </div>
+    }
+  }
+
+  @if (selectedTask(); as task) {
+    <afx-task-detail [task]="task" (close)="closeDetail()" />
+  }
+</div>
+
+<afx-modal
+  [open]="newTaskOpen()"
+  [title]="t('board.create.title')"
+  (close)="closeCreate()"
+>
+  <form class="afx-kanban__create" [formGroup]="createForm" (ngSubmit)="submitCreate()">
+    <label class="afx-field">
+      <span class="afx-field__label">{{ t('board.detail.title') }}</span>
+      <input class="afx-input" formControlName="title" />
+    </label>
+    <label class="afx-field">
+      <span class="afx-field__label">{{ t('board.detail.description') }}</span>
+      <textarea class="afx-textarea" formControlName="description"></textarea>
+    </label>
+    <label class="afx-field">
+      <span class="afx-field__label">{{ t('board.detail.assignee') }}</span>
+      <select class="afx-select" formControlName="assigneeId">
+        @for (u of assignees(); track u.id) {
+          <option [value]="u.id">{{ u.displayName }}</option>
+        }
+      </select>
+    </label>
+    <label class="afx-field">
+      <span class="afx-field__label">{{ t('board.detail.priority') }}</span>
+      <select class="afx-select" formControlName="priority">
+        <option value="high">{{ t('priority.high') }}</option>
+        <option value="medium">{{ t('priority.medium') }}</option>
+        <option value="low">{{ t('priority.low') }}</option>
+      </select>
+    </label>
+    <label class="afx-field">
+      <span class="afx-field__label">{{ t('board.detail.tags') }}</span>
+      <input class="afx-input" formControlName="tags" />
+    </label>
+    <div class="afx-kanban__create-actions">
+      <button type="button" class="afx-btn" (click)="closeCreate()">{{ t('common.cancel') }}</button>
+      <button type="submit" class="afx-btn afx-btn--primary">{{ t('board.create.submit') }}</button>
+    </div>
+  </form>
+</afx-modal>
