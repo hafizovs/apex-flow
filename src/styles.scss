@@ -1,0 +1,253 @@
+/* ApexFlow — Cyberpunk Minimal SaaS */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root,
+[data-theme='dark'] {
+  --afx-bg-deep: #0a0a0f;
+  --afx-bg-panel: #12121a;
+  --afx-bg-panel-elevated: #1a1a26;
+  --afx-bg-glass: rgba(26, 26, 38, 0.72);
+  --afx-border: #2a2a3a;
+  --afx-border-strong: #3d3d52;
+  --afx-text: #e8e8f0;
+  --afx-text-muted: #8888a0;
+  --afx-accent: #00e5ff;
+  --afx-accent-2: #ff2d95;
+  --afx-accent-soft: rgba(0, 229, 255, 0.12);
+  --afx-success: #00ff88;
+  --afx-warning: #ffb020;
+  --afx-danger: #ff4466;
+  --afx-priority-high: #ff4466;
+  --afx-priority-medium: #ffb020;
+  --afx-priority-low: #00e5ff;
+  --afx-role-admin: #ff2d95;
+  --afx-role-manager: #00e5ff;
+  --afx-role-developer: #8888a0;
+  --afx-focus-ring: #00e5ff;
+  --afx-grid-noise: rgba(255, 255, 255, 0.02);
+  --afx-sidebar-width: 240px;
+  --afx-topbar-height: 56px;
+  --afx-modal-z: 1000;
+  --afx-toast-z: 1100;
+  --afx-ghost-z: 999;
+  --afx-drawer-z: 100;
+  --afx-column-backlog: #3d3d52;
+  --afx-column-progress: #0066cc;
+  --afx-column-review: #9966ff;
+  --afx-column-done: #00ff88;
+  --afx-radius: 8px;
+  --afx-radius-sm: 4px;
+  --afx-font: 'DM Sans', system-ui, sans-serif;
+  --afx-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --afx-shadow-lift: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --afx-transition: 180ms ease;
+}
+
+[data-theme='light'] {
+  --afx-bg-deep: #f4f4f8;
+  --afx-bg-panel: #ffffff;
+  --afx-bg-panel-elevated: #f0f0f5;
+  --afx-bg-glass: rgba(255, 255, 255, 0.85);
+  --afx-border: #d8d8e4;
+  --afx-border-strong: #b8b8c8;
+  --afx-text: #12121a;
+  --afx-text-muted: #6a6a80;
+  --afx-accent-soft: rgba(0, 180, 200, 0.12);
+  --afx-grid-noise: rgba(0, 0, 0, 0.03);
+  --afx-shadow-lift: 0 8px 24px rgba(18, 18, 26, 0.12);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--afx-font);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--afx-text);
+  background: var(--afx-bg-deep);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--afx-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--afx-focus-ring);
+  outline-offset: 2px;
+}
+
+.afx-glass {
+  background: var(--afx-bg-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--afx-border);
+}
+
+.afx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius-sm);
+  background: var(--afx-bg-panel-elevated);
+  color: var(--afx-text);
+  cursor: pointer;
+  transition:
+    background var(--afx-transition),
+    border-color var(--afx-transition),
+    color var(--afx-transition),
+    box-shadow var(--afx-transition);
+}
+
+.afx-btn:hover:not(:disabled) {
+  border-color: var(--afx-border-strong);
+  background: var(--afx-bg-panel);
+}
+
+.afx-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.afx-btn--primary {
+  background: var(--afx-accent-soft);
+  border-color: var(--afx-accent);
+  color: var(--afx-accent);
+}
+
+.afx-btn--primary:hover:not(:disabled) {
+  box-shadow: 0 0 0 1px var(--afx-accent);
+}
+
+.afx-btn--danger {
+  border-color: var(--afx-danger);
+  color: var(--afx-danger);
+}
+
+.afx-btn--ghost {
+  background: transparent;
+  border-color: transparent;
+}
+
+.afx-input,
+.afx-select,
+.afx-textarea {
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius-sm);
+  background: var(--afx-bg-deep);
+  color: var(--afx-text);
+  transition: border-color var(--afx-transition);
+}
+
+.afx-textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.afx-input:focus,
+.afx-select:focus,
+.afx-textarea:focus {
+  border-color: var(--afx-accent);
+  outline: none;
+}
+
+.afx-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.afx-field__label {
+  font-size: 12px;
+  color: var(--afx-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.afx-field__error {
+  font-size: 12px;
+  color: var(--afx-danger);
+}
+
+.afx-field--invalid .afx-input,
+.afx-field--invalid .afx-select,
+.afx-field--invalid .afx-textarea {
+  border-color: var(--afx-danger);
+}
+
+@keyframes afx-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes afx-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes afx-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes afx-nav-glow {
+  from {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  to {
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.35);
+  }
+}
+
+.afx-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
