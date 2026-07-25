@@ -1,0 +1,10 @@
+export const SIDEBAR_WIDTH_PX = 240;
+export const TOPBAR_HEIGHT_PX = 56;
+export const MODAL_Z_INDEX = 1000;
+export const TOAST_Z_INDEX = 1100;
+export const DRAG_GHOST_Z_INDEX = 999;
+export const TOAST_DURATION_MS = 2500;
+export const RESPONSIVE_BREAKPOINT_PX = 900;
+export const TASK_DETAIL_DRAWER_WIDTH_PX = 420;
+export const DEFAULT_PAGE_SIZE = 10;
+export const PAGE_SIZE_OPTIONS = [10, 20, 50] as const;
