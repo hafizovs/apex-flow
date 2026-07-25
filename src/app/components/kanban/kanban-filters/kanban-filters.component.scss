@@ -1,0 +1,11 @@
+.afx-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.afx-filters .afx-field {
+  min-width: 180px;
+}

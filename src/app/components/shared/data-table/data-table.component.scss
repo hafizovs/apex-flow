@@ -1,0 +1,44 @@
+.afx-table-wrap {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius);
+  background: var(--afx-bg-panel);
+}
+
+.afx-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.afx-table th,
+.afx-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--afx-border);
+  vertical-align: middle;
+}
+
+.afx-table th {
+  font-size: 12px;
+  color: var(--afx-text-muted);
+  font-weight: 600;
+  background: var(--afx-bg-panel-elevated);
+}
+
+.afx-table__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.afx-table tbody tr:hover td {
+  background: var(--afx-accent-soft);
+}

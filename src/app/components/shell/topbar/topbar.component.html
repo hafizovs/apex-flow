@@ -1,0 +1,89 @@
+<header class="afx-topbar">
+  <h1 class="afx-topbar__title">{{ pageTitle() }}</h1>
+  <div class="afx-topbar__spacer"></div>
+  @if (loading()) {
+    <afx-loading-spinner size="sm" />
+  }
+  <button
+    type="button"
+    class="afx-btn afx-btn--ghost"
+    (click)="toggleTheme()"
+    [attr.aria-label]="t('theme.toggle')"
+  >
+    {{ themeLabel() }}
+  </button>
+  <button
+    type="button"
+    class="afx-btn afx-btn--ghost"
+    (click)="toggleLocale()"
+    [attr.aria-label]="t('common.locale')"
+  >
+    {{ localeLabel() }}
+  </button>
+  <button
+    type="button"
+    class="afx-btn afx-btn--ghost"
+    (click)="toggleHelp()"
+    [attr.aria-label]="t('common.help')"
+  >
+    ?
+  </button>
+  <div class="afx-topbar__user">
+    <button
+      type="button"
+      class="afx-btn afx-topbar__user-btn"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      [attr.aria-label]="t('common.userMenu')"
+    >
+      @if (user(); as u) {
+        <span>{{ u.displayName }}</span>
+        <afx-role-badge [role]="u.role" />
+      }
+    </button>
+    @if (menuOpen()) {
+      <div class="afx-topbar__dropdown" role="menu">
+        @if (user(); as u) {
+          <div class="afx-topbar__profile">
+            <strong>{{ u.displayName }}</strong>
+            <span>{{ u.email }}</span>
+          </div>
+        }
+        @if (isAdmin()) {
+          <button
+            type="button"
+            class="afx-topbar__menu-item"
+            role="menuitem"
+            (click)="openResetConfirm()"
+          >
+            {{ t('common.demoReset') }}
+          </button>
+        }
+        <button
+          type="button"
+          class="afx-topbar__menu-item"
+          role="menuitem"
+          (click)="logout()"
+        >
+          {{ t('common.logout') }}
+        </button>
+      </div>
+    }
+  </div>
+</header>
+
+<afx-modal
+  [open]="resetConfirmOpen()"
+  [title]="t('common.demoReset')"
+  (close)="closeResetConfirm()"
+>
+  <p>{{ t('common.demoResetConfirm') }}</p>
+  <div class="afx-topbar__modal-actions">
+    <button type="button" class="afx-btn" (click)="closeResetConfirm()">
+      {{ t('common.cancel') }}
+    </button>
+    <button type="button" class="afx-btn afx-btn--primary" (click)="confirmReset()">
+      {{ t('common.confirm') }}
+    </button>
+  </div>
+</afx-modal>

@@ -1,0 +1,79 @@
+.afx-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--afx-bg-panel);
+  border-right: 1px solid var(--afx-border);
+  padding: 20px 16px;
+}
+
+.afx-sidebar__brand {
+  margin-bottom: 28px;
+}
+
+.afx-sidebar__logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(90deg, var(--afx-accent), var(--afx-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.afx-sidebar__logo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--afx-accent), transparent);
+}
+
+.afx-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.afx-sidebar__link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--afx-radius-sm);
+  color: var(--afx-text-muted);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    color var(--afx-transition),
+    background var(--afx-transition),
+    border-color var(--afx-transition),
+    box-shadow 180ms ease;
+}
+
+.afx-sidebar__link:hover {
+  color: var(--afx-text);
+  background: var(--afx-accent-soft);
+  text-decoration: none;
+}
+
+.afx-sidebar__link--active {
+  color: var(--afx-accent);
+  background: var(--afx-accent-soft);
+  border-color: color-mix(in srgb, var(--afx-accent) 40%, transparent);
+  animation: afx-nav-glow 180ms ease forwards;
+}
+
+.afx-sidebar__footer {
+  font-size: 12px;
+  color: var(--afx-text-muted);
+  font-family: var(--afx-font-mono);
+}
+
+@media (max-width: 900px) {
+  .afx-sidebar {
+    display: none;
+  }
+}

@@ -1,0 +1,32 @@
+.afx-burndown__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.afx-burndown__grid {
+  stroke: var(--afx-border);
+  stroke-width: 1;
+}
+
+.afx-burndown__tick,
+.afx-burndown__xtick {
+  fill: var(--afx-text-muted);
+  font-size: 11px;
+  font-family: var(--afx-font-mono);
+}
+
+.afx-burndown__area {
+  fill: color-mix(in srgb, var(--afx-accent) 18%, transparent);
+}
+
+.afx-burndown__line {
+  stroke: var(--afx-accent);
+  stroke-width: 2.5;
+}
+
+.afx-burndown__dot {
+  fill: var(--afx-bg-panel);
+  stroke: var(--afx-accent-2);
+  stroke-width: 2;
+}

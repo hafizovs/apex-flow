@@ -1,0 +1,28 @@
+.afx-priority-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--afx-radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+}
+
+.afx-priority-badge[data-priority='high'] {
+  color: var(--afx-priority-high);
+  background: color-mix(in srgb, var(--afx-priority-high) 16%, transparent);
+  border-color: color-mix(in srgb, var(--afx-priority-high) 40%, transparent);
+}
+
+.afx-priority-badge[data-priority='medium'] {
+  color: var(--afx-priority-medium);
+  background: color-mix(in srgb, var(--afx-priority-medium) 16%, transparent);
+  border-color: color-mix(in srgb, var(--afx-priority-medium) 40%, transparent);
+}
+
+.afx-priority-badge[data-priority='low'] {
+  color: var(--afx-priority-low);
+  background: color-mix(in srgb, var(--afx-priority-low) 16%, transparent);
+  border-color: color-mix(in srgb, var(--afx-priority-low) 40%, transparent);
+}

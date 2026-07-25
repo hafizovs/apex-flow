@@ -1,0 +1,19 @@
+.afx-toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: var(--afx-toast-z);
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 12px 16px;
+  border-radius: var(--afx-radius);
+  border: 1px solid var(--afx-border);
+  background: var(--afx-bg-panel-elevated);
+  color: var(--afx-text);
+  box-shadow: var(--afx-shadow-lift);
+  animation: afx-slide-up 200ms ease;
+}
+
+.afx-toast--error {
+  border-color: var(--afx-danger);
+  color: var(--afx-danger);
+}

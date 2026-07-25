@@ -1,0 +1,148 @@
+.afx-auth {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  background: var(--afx-bg-deep);
+}
+
+.afx-auth__hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 229, 255, 0.18), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255, 45, 149, 0.14), transparent 40%),
+    linear-gradient(160deg, #0a0a0f 0%, #12121a 55%, #0d1520 100%);
+  overflow: hidden;
+}
+
+.afx-auth__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--afx-grid-noise) 1px, transparent 1px),
+    linear-gradient(90deg, var(--afx-grid-noise) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.afx-auth__hero h1 {
+  position: relative;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(90deg, var(--afx-accent), var(--afx-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.afx-auth__hero p {
+  position: relative;
+  margin-top: 12px;
+  max-width: 360px;
+  color: var(--afx-text-muted);
+  font-size: 16px;
+}
+
+.afx-auth__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 48px clamp(24px, 5vw, 64px);
+  background: var(--afx-bg-panel);
+  border-left: 1px solid var(--afx-border);
+}
+
+.afx-auth__card h2 {
+  font-size: 24px;
+}
+
+.afx-auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.afx-auth__submit {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.afx-auth__error {
+  color: var(--afx-danger);
+  font-size: 13px;
+}
+
+.afx-auth__link {
+  font-size: 13px;
+}
+
+.afx-auth__demo {
+  margin-top: 8px;
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius);
+  padding: 10px 12px;
+  background: var(--afx-bg-deep);
+}
+
+.afx-auth__demo summary {
+  cursor: pointer;
+  color: var(--afx-text-muted);
+  font-size: 13px;
+}
+
+.afx-auth__demo ul {
+  list-style: none;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.afx-auth__demo-btn {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius-sm);
+  background: var(--afx-bg-panel-elevated);
+  color: var(--afx-text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.afx-auth__demo-btn code {
+  font-family: var(--afx-font-mono);
+  font-size: 12px;
+  color: var(--afx-accent);
+}
+
+@media (max-width: 900px) {
+  .afx-auth {
+    grid-template-columns: 1fr;
+  }
+
+  .afx-auth__hero {
+    min-height: 180px;
+    padding: 32px 24px;
+  }
+
+  .afx-auth__card {
+    border-left: none;
+    border-top: 1px solid var(--afx-border);
+  }
+}
+
+@media (max-width: 600px) {
+  .afx-auth__demo-btn {
+    grid-template-columns: 1fr;
+  }
+}

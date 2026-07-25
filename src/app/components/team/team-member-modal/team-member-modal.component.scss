@@ -1,0 +1,12 @@
+.afx-member-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.afx-member-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}

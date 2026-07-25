@@ -1,0 +1,57 @@
+.afx-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--afx-modal-z);
+  pointer-events: none;
+}
+
+.afx-modal--open {
+  pointer-events: auto;
+}
+
+.afx-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  animation: afx-fade-in 200ms ease;
+}
+
+.afx-modal__panel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(480px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  background: var(--afx-bg-panel);
+  border: 1px solid var(--afx-border);
+  border-radius: var(--afx-radius);
+  box-shadow: var(--afx-shadow-lift);
+  animation: afx-slide-up 200ms ease;
+}
+
+.afx-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--afx-border);
+}
+
+.afx-modal__title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.afx-modal__close {
+  min-height: 32px;
+  min-width: 32px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.afx-modal__body {
+  padding: 18px;
+}

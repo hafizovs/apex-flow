@@ -1,0 +1,34 @@
+<section
+  class="afx-kanban-column"
+  [class.afx-kanban-column--drag-over]="dragOver()"
+  [attr.data-column-id]="column().id"
+  role="list"
+  [attr.aria-label]="t(column().titleKey)"
+>
+  <header class="afx-kanban-column__header">
+    <h2>{{ t(column().titleKey) }}</h2>
+    <span class="afx-kanban-column__count">{{ tasks().length }}</span>
+  </header>
+  <div class="afx-kanban-column__body">
+    @if (loading()) {
+      @for (_ of [1, 2, 3]; track $index) {
+        <div class="afx-kanban-column__skeleton"></div>
+      }
+    } @else if (tasks().length === 0) {
+      <afx-empty-state
+        titleKey="board.empty.column"
+        descriptionKey="board.empty.columnHint"
+        [compact]="true"
+      />
+    } @else {
+      @for (task of tasks(); track task.id) {
+        <afx-task-card
+          [task]="task"
+          [dragging]="draggingTaskId() === task.id"
+          (openDetail)="taskOpen.emit($event)"
+          (dragStart)="dragStart.emit($event)"
+        />
+      }
+    }
+  </div>
+</section>

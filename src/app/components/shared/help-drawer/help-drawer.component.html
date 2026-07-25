@@ -1,0 +1,18 @@
+<div class="afx-help" role="dialog" aria-modal="true" [attr.aria-label]="t('help.title')">
+  <div class="afx-help__backdrop" (click)="close()"></div>
+  <aside class="afx-help__panel">
+    <header class="afx-help__header">
+      <h2>{{ t('help.title') }}</h2>
+      <button type="button" class="afx-btn afx-btn--ghost" (click)="close()">×</button>
+    </header>
+    <h3 class="afx-help__subtitle">{{ t('help.hotkeys') }}</h3>
+    <ul class="afx-help__list">
+      @for (item of hotkeys; track item.key) {
+        <li class="afx-help__row">
+          <kbd>{{ item.key }}</kbd>
+          <span>{{ t(item.labelKey) }}</span>
+        </li>
+      }
+    </ul>
+  </aside>
+</div>

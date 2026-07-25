@@ -1,0 +1,19 @@
+<aside class="afx-sidebar">
+  <div class="afx-sidebar__brand">
+    <span class="afx-sidebar__logo">ApexFlow</span>
+  </div>
+  <nav class="afx-sidebar__nav" [attr.aria-label]="t('nav.board')">
+    @for (item of navItems(); track item.path) {
+      <a
+        class="afx-sidebar__link"
+        [routerLink]="item.path"
+        routerLinkActive="afx-sidebar__link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+      >
+        {{ t(item.labelKey) }}
+      </a>
+    }
+  </nav>
+  <footer class="afx-sidebar__footer">{{ t('common.version') }}</footer>
+</aside>

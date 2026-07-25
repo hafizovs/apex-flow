@@ -1,0 +1,24 @@
+.afx-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 28px 16px;
+  text-align: center;
+  color: var(--afx-text-muted);
+}
+
+.afx-empty--compact {
+  padding: 16px 8px;
+}
+
+.afx-empty__title {
+  color: var(--afx-text);
+  font-weight: 600;
+}
+
+.afx-empty__desc {
+  font-size: 13px;
+  max-width: 280px;
+}

@@ -1,0 +1,30 @@
+<afx-modal [open]="true" [title]="title()" (close)="onClose()">
+  <form class="afx-member-form" [formGroup]="form" (ngSubmit)="submit()">
+    <label class="afx-field">
+      <span class="afx-field__label">{{ t('auth.email') }}</span>
+      <input class="afx-input" type="email" formControlName="email" />
+    </label>
+    <label class="afx-field">
+      <span class="afx-field__label">{{ t('auth.displayName') }}</span>
+      <input class="afx-input" type="text" formControlName="displayName" />
+    </label>
+    @if (mode() === 'add') {
+      <label class="afx-field">
+        <span class="afx-field__label">{{ t('auth.password') }}</span>
+        <input class="afx-input" type="password" formControlName="password" />
+      </label>
+    }
+    <label class="afx-field">
+      <span class="afx-field__label">{{ t('team.column.role') }}</span>
+      <select class="afx-select" formControlName="role">
+        <option value="admin">{{ t('role.admin') }}</option>
+        <option value="manager">{{ t('role.manager') }}</option>
+        <option value="developer">{{ t('role.developer') }}</option>
+      </select>
+    </label>
+    <div class="afx-member-form__actions">
+      <button type="button" class="afx-btn" (click)="onClose()">{{ t('common.cancel') }}</button>
+      <button type="submit" class="afx-btn afx-btn--primary">{{ t('common.save') }}</button>
+    </div>
+  </form>
+</afx-modal>
