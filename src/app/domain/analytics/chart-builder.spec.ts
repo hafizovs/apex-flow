@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import type { PriorityStat, Task } from '../../models/app.types';
+import type { PriorityStat, Task } from '../../core/models/app.types';
 import { BURNDOWN_DAYS } from '../../core/constants/analytics.constants';
 import {
   buildAnalyticsSummary,

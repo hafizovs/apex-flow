@@ -3,7 +3,7 @@ import type {
   KanbanColumn,
   KanbanColumnDef,
   Task,
-} from '../../models/app.types';
+} from '../../core/models/app.types';
 
 export const COLUMN_DEFINITIONS: readonly KanbanColumnDef[] =
   COLUMN_DEFINITIONS_CONST;

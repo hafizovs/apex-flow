@@ -1,21 +1,21 @@
 import { Routes } from '@angular/router';
-import { AppShellComponent } from './components/shell/app-shell.component';
-import { authGuard, guestGuard } from './guards/auth.guard';
-import { roleGuard } from './guards/role.guard';
-import type { Role } from './models/app.types';
+import { AppShellComponent } from './core/layout/app-shell.component';
+import { authGuard, guestGuard } from './core/guards/auth.guard';
+import { roleGuard } from './core/guards/role.guard';
+import type { Role } from './core/models/app.types';
 
 export const routes: Routes = [
   {
     path: 'login',
     canActivate: [guestGuard],
     loadComponent: () =>
-      import('./pages/login/login.page').then((m) => m.LoginPage),
+      import('./features/auth/components/login/login.page').then((m) => m.LoginPage),
   },
   {
     path: 'register',
     canActivate: [guestGuard],
     loadComponent: () =>
-      import('./pages/register/register.page').then((m) => m.RegisterPage),
+      import('./features/auth/components/register/register.page').then((m) => m.RegisterPage),
   },
   {
     path: '',
@@ -26,14 +26,14 @@ export const routes: Routes = [
       {
         path: 'board',
         loadComponent: () =>
-          import('./components/kanban/kanban.component').then(
+          import('./features/board/components/kanban/kanban.component').then(
             (m) => m.KanbanComponent,
           ),
       },
       {
         path: 'analytics',
         loadComponent: () =>
-          import('./components/analytics/analytics.component').then(
+          import('./features/analytics/components/analytics/analytics.component').then(
             (m) => m.AnalyticsComponent,
           ),
         canActivate: [roleGuard],
@@ -42,7 +42,7 @@ export const routes: Routes = [
       {
         path: 'team',
         loadComponent: () =>
-          import('./components/team/team.component').then((m) => m.TeamComponent),
+          import('./features/team/components/team/team.component').then((m) => m.TeamComponent),
         canActivate: [roleGuard],
         data: { roles: ['admin'] satisfies Role[] },
       },

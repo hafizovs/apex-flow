@@ -1,6 +1,6 @@
-export type { TaskPriority } from '../../models/app.types';
+export type { TaskPriority } from './app.types';
 
-import type { TaskPriority } from '../../models/app.types';
+import type { TaskPriority } from './app.types';
 
 export const TASK_PRIORITIES: readonly TaskPriority[] = [
   'high',

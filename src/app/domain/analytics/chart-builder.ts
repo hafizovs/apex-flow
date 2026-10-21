@@ -14,7 +14,7 @@ import type {
   PriorityStat,
   Task,
   TaskPriority,
-} from '../../models/app.types';
+} from '../../core/models/app.types';
 import { formatDateKeyShort } from '../shared/date.helpers';
 import { computeBurndown } from './burndown';
 import { computePriorityStats } from './priority-stats';

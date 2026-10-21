@@ -1,3 +1,7 @@
+## Live demo
+
+https://hafizovs.github.io/apex-flow/
+
 # ApexFlow
 
 Cyberpunk Minimal SaaS project board — Angular 22 standalone, Signals, OnPush, zoneless. Mock REST via HTTP interceptor.
@@ -7,7 +11,7 @@ Cyberpunk Minimal SaaS project board — Angular 22 standalone, Signals, OnPush,
 ```bash
 npm install
 npm start          # http://localhost:4200
-npm test           # Vitest unit tests
+npm test
 npm run build
 ```
 
@@ -51,7 +55,3 @@ npm run build
 | `Enter` | Drop card into focused column |
 
 Hotkeys are ignored when focus is in `input` / `textarea` / `select` / `contenteditable`, except `Escape`.
-
-## Docs
-
-Product architecture and acceptance criteria live in [`../docs`](../docs).

@@ -1,5 +1,5 @@
 import { BURNDOWN_DAYS } from '../../core/constants/analytics.constants';
-import type { AnalyticsPoint, Task } from '../../models/app.types';
+import type { AnalyticsPoint, Task } from '../../core/models/app.types';
 import { addDays, startOfDayUtc, toDateKey } from '../shared/date.helpers';
 
 /**

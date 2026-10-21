@@ -1,6 +1,6 @@
-export type { Role } from '../../models/app.types';
+export type { Role } from './app.types';
 
-import type { Role } from '../../models/app.types';
+import type { Role } from './app.types';
 
 export const ROLES: readonly Role[] = ['admin', 'manager', 'developer'] as const;
 

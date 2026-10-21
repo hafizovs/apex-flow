@@ -1,4 +1,4 @@
-import type { Task, TaskPriority } from '../../models/app.types';
+import type { Task, TaskPriority } from '../../core/models/app.types';
 
 export interface TaskFilterState {
   assigneeId: string | 'all';

@@ -1,6 +1,6 @@
 /** @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import type { ColumnId, Task } from '../../models/app.types';
+import type { ColumnId, Task } from '../../core/models/app.types';
 import {
   canDropTask,
   findColumnIdFromElement,

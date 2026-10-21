@@ -1,4 +1,4 @@
-import type { PriorityStat, Task, TaskPriority } from '../../models/app.types';
+import type { PriorityStat, Task, TaskPriority } from '../../core/models/app.types';
 
 const PRIORITY_ORDER: readonly TaskPriority[] = ['high', 'medium', 'low'];
 

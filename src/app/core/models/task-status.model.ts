@@ -1,6 +1,6 @@
-export type { TaskStatus, ColumnId } from '../../models/app.types';
+export type { TaskStatus, ColumnId } from './app.types';
 
-import type { ColumnId, TaskStatus } from '../../models/app.types';
+import type { ColumnId, TaskStatus } from './app.types';
 
 export const TASK_STATUSES: readonly TaskStatus[] = [
   'backlog',

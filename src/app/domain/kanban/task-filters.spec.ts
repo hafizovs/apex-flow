@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { Task } from '../../models/app.types';
+import type { Task } from '../../core/models/app.types';
 import { applyTaskFilters } from './task-filters';
 
 function makeTask(partial: Partial<Task> & Pick<Task, 'id'>): Task {

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import type { Task } from '../../models/app.types';
+import type { Task } from '../../core/models/app.types';
 import { computeBurndown } from './burndown';
 
 function makeTask(partial: Partial<Task> & Pick<Task, 'id'>): Task {

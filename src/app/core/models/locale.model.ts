@@ -1,6 +1,6 @@
-export type { LocaleId } from '../../models/app.types';
+export type { LocaleId } from './app.types';
 
-import type { LocaleId } from '../../models/app.types';
+import type { LocaleId } from './app.types';
 
 export const LOCALES: readonly LocaleId[] = ['ru', 'en'] as const;
 

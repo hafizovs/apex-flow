@@ -1,4 +1,4 @@
-import type { KanbanColumnDef } from '../../models/app.types';
+import type { KanbanColumnDef } from '../models/app.types';
 
 export const MAX_TASK_TITLE = 120;
 export const MAX_TASK_DESCRIPTION = 4000;
