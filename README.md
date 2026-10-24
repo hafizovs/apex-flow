@@ -6,6 +6,25 @@ https://hafizovs.github.io/apex-flow/
 
 Cyberpunk Minimal SaaS project board — Angular 22 standalone, Signals, OnPush, zoneless. Mock REST via HTTP interceptor.
 
+## About
+
+ApexFlow is a Cyberpunk Minimal SaaS project board built with Angular 22 standalone components, Signals, OnPush, and zoneless change detection. Sign-in and board data go through a mock REST API behind an HTTP interceptor. Authenticated users get a kanban; analytics and team admin open only for the roles allowed to see them.
+
+## Capabilities
+
+- Public login and registration, with demo Admin, Manager, and Developer accounts
+- Kanban for any authenticated user, including keyboard drag-and-drop
+- Analytics for admin and manager; team admin for admin only
+- RU/EN locale, dark/light theme, and a help drawer
+
+## Functionality
+
+- Sign in or register, then open `/board` to create tasks and move cards between columns
+- Open `/analytics` as admin or manager, and `/team` only as admin
+- Delete any task as admin or manager; as a developer, delete only tasks assigned to you
+- Reset the demo as admin
+- Press `N` for a new task, `Space` / arrow keys / `Enter` to pick up and drop a focused card, and `Escape` to close overlays or cancel a drag
+
 ## Scripts
 
 ```bash
