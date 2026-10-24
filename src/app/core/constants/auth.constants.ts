@@ -7,6 +7,6 @@ export const TOKEN_PREFIX = 'afx_tok_';
 export const ID_PREFIX_USER = 'usr_';
 export const ID_PREFIX_TASK = 'tsk_';
 export const ID_PREFIX_LOG = 'log_';
-export const DEFAULT_LOCALE = 'ru' as const;
+export const DEFAULT_LOCALE = 'en' as const;
 export const DEFAULT_THEME = 'dark' as const;
 export const SEED_ADMIN_ID = 'usr_admin';
