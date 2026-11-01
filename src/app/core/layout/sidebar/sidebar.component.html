@@ -1,4 +1,4 @@
-<aside class="afx-sidebar">
+<aside class="afx-sidebar" [class.afx-sidebar--open]="ui.mobileNavOpen()">
   <div class="afx-sidebar__brand">
     <span class="afx-sidebar__logo">ApexFlow</span>
   </div>
@@ -10,6 +10,7 @@
         routerLinkActive="afx-sidebar__link--active"
         [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
+        (click)="onNavClick()"
       >
         {{ t(item.labelKey) }}
       </a>

@@ -58,7 +58,33 @@
 
 .afx-kanban__create-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
   margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .afx-kanban__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .afx-kanban__toolbar .afx-btn--primary {
+    width: 100%;
+  }
+
+  .afx-kanban__board {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: visible;
+    min-height: 0;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .afx-kanban-ghost {
+    width: min(260px, calc(100% - 24px));
+  }
 }

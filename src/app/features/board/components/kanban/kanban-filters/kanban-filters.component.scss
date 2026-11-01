@@ -8,4 +8,17 @@
 
 .afx-filters .afx-field {
   min-width: 180px;
+  flex: 1 1 160px;
+}
+
+@media (max-width: 768px) {
+  .afx-filters {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .afx-filters .afx-field {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
 }

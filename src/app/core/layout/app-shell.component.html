@@ -1,4 +1,16 @@
-<div class="afx-shell" [attr.data-theme]="ui.theme()">
+<div
+  class="afx-shell"
+  [class.afx-shell--nav-open]="ui.mobileNavOpen()"
+  [attr.data-theme]="ui.theme()"
+>
+  @if (ui.mobileNavOpen()) {
+    <button
+      type="button"
+      class="afx-shell__nav-backdrop"
+      [attr.aria-label]="t('nav.closeMenu')"
+      (click)="closeMobileNav()"
+    ></button>
+  }
   <afx-sidebar />
   <div class="afx-shell__main">
     <afx-topbar />

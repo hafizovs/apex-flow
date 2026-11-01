@@ -4,6 +4,8 @@ export const RU: Record<I18nKey, string> = {
   'nav.board': 'Доска',
   'nav.analytics': 'Аналитика',
   'nav.team': 'Команда',
+  'nav.openMenu': 'Открыть меню',
+  'nav.closeMenu': 'Закрыть меню',
   'auth.login.title': 'Вход',
   'auth.register.title': 'Регистрация',
   'auth.tagline': 'Система управления проектами и аналитики',

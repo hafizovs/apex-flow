@@ -93,6 +93,10 @@ export class TopbarComponent {
     this.ui.toggleHelp();
   }
 
+  protected toggleMobileNav(): void {
+    this.ui.toggleMobileNav();
+  }
+
   protected toggleMenu(): void {
     this.menuOpen.update((v) => !v);
   }

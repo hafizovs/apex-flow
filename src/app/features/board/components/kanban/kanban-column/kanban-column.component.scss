@@ -69,3 +69,13 @@
     max-width: none;
   }
 }
+
+@media (max-width: 768px) {
+  .afx-kanban-column {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+    flex: none;
+    min-height: 240px;
+  }
+}

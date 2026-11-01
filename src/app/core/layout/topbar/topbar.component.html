@@ -1,4 +1,13 @@
 <header class="afx-topbar">
+  <button
+    type="button"
+    class="afx-topbar__menu afx-btn afx-btn--ghost"
+    (click)="toggleMobileNav()"
+    [attr.aria-expanded]="ui.mobileNavOpen()"
+    [attr.aria-label]="t('nav.openMenu')"
+  >
+    <span class="afx-topbar__menu-icon" aria-hidden="true"></span>
+  </button>
   <h1 class="afx-topbar__title">{{ pageTitle() }}</h1>
   <div class="afx-topbar__spacer"></div>
   @if (loading()) {
