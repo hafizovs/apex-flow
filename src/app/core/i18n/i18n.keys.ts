@@ -2,6 +2,8 @@ export const I18N_KEYS = [
   'nav.board',
   'nav.analytics',
   'nav.team',
+  'nav.openMenu',
+  'nav.closeMenu',
   'auth.login.title',
   'auth.register.title',
   'auth.tagline',

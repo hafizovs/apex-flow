@@ -5,6 +5,7 @@
   background: var(--afx-bg-panel);
   border-right: 1px solid var(--afx-border);
   padding: 20px 16px;
+  min-width: 0;
 }
 
 .afx-sidebar__brand {
@@ -74,6 +75,21 @@
 
 @media (max-width: 900px) {
   .afx-sidebar {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: var(--afx-drawer-z);
+    width: min(280px, calc(100% - 48px));
+    max-width: 100%;
+    height: 100%;
+    height: 100dvh;
+    transform: translateX(-105%);
+    transition: transform var(--afx-transition);
+    box-shadow: var(--afx-shadow-lift);
+  }
+
+  .afx-sidebar--open {
+    transform: translateX(0);
   }
 }

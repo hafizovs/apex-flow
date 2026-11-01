@@ -4,6 +4,8 @@ export const EN: Record<I18nKey, string> = {
   'nav.board': 'Board',
   'nav.analytics': 'Analytics',
   'nav.team': 'Team',
+  'nav.openMenu': 'Open navigation',
+  'nav.closeMenu': 'Close navigation',
   'auth.login.title': 'Sign in',
   'auth.register.title': 'Sign up',
   'auth.tagline': 'Project Management & Analytics Platform',

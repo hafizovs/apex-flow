@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import type { Role } from '../../models/app.types';
 import { AuthService } from '../../../features/auth/auth.service';
 import { I18nService } from '../../i18n.service';
+import { UiStore } from '../../ui/ui.store';
 
 interface NavItem {
   path: string;
@@ -20,6 +21,7 @@ interface NavItem {
 export class SidebarComponent {
   private readonly auth = inject(AuthService);
   protected readonly i18n = inject(I18nService);
+  protected readonly ui = inject(UiStore);
 
   private readonly allItems: NavItem[] = [
     { path: '/board', labelKey: 'nav.board', roles: 'all' },
@@ -38,5 +40,9 @@ export class SidebarComponent {
 
   protected t(key: string): string {
     return this.i18n.t(key);
+  }
+
+  protected onNavClick(): void {
+    this.ui.setMobileNavOpen(false);
   }
 }

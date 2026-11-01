@@ -3,9 +3,12 @@
   grid-template-columns: var(--afx-sidebar-width) 1fr;
   grid-template-rows: 1fr;
   height: 100vh;
-  width: 100vw;
+  height: 100dvh;
+  width: 100%;
+  max-width: 100%;
   overflow: hidden;
   background: var(--afx-bg-deep);
+  position: relative;
 }
 
 .afx-shell__main {
@@ -17,11 +20,41 @@
 
 .afx-shell__outlet {
   overflow: auto;
-  padding: 24px;
+  padding: var(--afx-page-padding);
+  -webkit-overflow-scrolling: touch;
+}
+
+.afx-shell__nav-backdrop {
+  display: none;
 }
 
 @media (max-width: 900px) {
   .afx-shell {
     grid-template-columns: 1fr;
+  }
+
+  .afx-shell__nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--afx-drawer-z) - 1);
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.55);
+    animation: afx-fade-in 200ms ease;
+  }
+}
+
+@media (max-width: 768px) {
+  .afx-shell__outlet {
+    padding: var(--afx-page-padding-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .afx-shell__outlet {
+    padding: var(--afx-page-padding-sm);
   }
 }

@@ -59,8 +59,28 @@
   }
 }
 
+@media (max-width: 768px) {
+  .afx-analytics__title {
+    font-size: 17px;
+  }
+
+  .afx-kpi__value {
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 600px) {
   .afx-analytics__kpis {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .afx-analytics__chart {
+    padding: 12px;
+  }
+
+  .afx-kpi {
+    padding: 14px;
   }
 }

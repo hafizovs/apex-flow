@@ -62,3 +62,12 @@
   background: var(--afx-bg-deep);
   font-size: 12px;
 }
+
+@media (max-width: 768px) {
+  .afx-help__panel {
+    width: 100%;
+    max-width: 100%;
+    border-left: none;
+    padding: 16px;
+  }
+}

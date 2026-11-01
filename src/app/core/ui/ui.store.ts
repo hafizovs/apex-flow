@@ -37,6 +37,7 @@ export class UiStore {
   readonly theme = signal<ThemeId>(readStoredTheme());
   readonly locale = signal<LocaleId>(readStoredLocale());
   readonly helpOpen = signal(false);
+  readonly mobileNavOpen = signal(false);
   readonly toastMessage = signal<string | null>(null);
   readonly globalLoading = signal(false);
   readonly selectedTaskId = signal<string | null>(null);
@@ -89,6 +90,14 @@ export class UiStore {
 
   toggleHelp(): void {
     this.helpOpen.update((open) => !open);
+  }
+
+  toggleMobileNav(): void {
+    this.mobileNavOpen.update((open) => !open);
+  }
+
+  setMobileNavOpen(open: boolean): void {
+    this.mobileNavOpen.set(open);
   }
 
   setHelpOpen(open: boolean): void {
@@ -149,6 +158,7 @@ export class UiStore {
 
   closeOverlays(): void {
     this.helpOpen.set(false);
+    this.mobileNavOpen.set(false);
     this.teamModalOpen.set(null);
     this.newTaskModalOpen.set(false);
     this.confirmDeleteTaskId.set(null);

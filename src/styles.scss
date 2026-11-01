@@ -34,6 +34,12 @@
   --afx-grid-noise: rgba(255, 255, 255, 0.02);
   --afx-sidebar-width: 240px;
   --afx-topbar-height: 56px;
+  --afx-page-padding: 24px;
+  --afx-page-padding-md: 16px;
+  --afx-page-padding-sm: 12px;
+  --afx-breakpoint-tablet: 900px;
+  --afx-breakpoint-mobile: 768px;
+  --afx-breakpoint-narrow: 480px;
   --afx-modal-z: 1000;
   --afx-toast-z: 1100;
   --afx-ghost-z: 999;
@@ -64,13 +70,17 @@
   --afx-shadow-lift: 0 8px 24px rgba(18, 18, 26, 0.12);
 }
 
-html,
-body {
+html {
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
 }
 
 body {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   font-family: var(--afx-font);
   font-size: 14px;
   line-height: 1.5;
@@ -250,4 +260,25 @@ a:hover {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .afx-btn {
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 16px;
+  }
+
+  .afx-field__label {
+    font-size: 13px;
+  }
 }

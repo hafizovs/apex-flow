@@ -17,3 +17,12 @@
   border-color: var(--afx-danger);
   color: var(--afx-danger);
 }
+
+@media (max-width: 768px) {
+  .afx-toast {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    max-width: none;
+  }
+}

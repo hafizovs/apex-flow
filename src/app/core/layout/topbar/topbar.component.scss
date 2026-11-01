@@ -6,23 +6,61 @@
   padding: 0 20px;
   border-bottom: 1px solid var(--afx-border);
   background: var(--afx-bg-panel);
+  min-width: 0;
+}
+
+.afx-topbar__menu {
+  display: none;
+  flex-shrink: 0;
+  min-width: 40px;
+  padding: 0 8px;
+}
+
+.afx-topbar__menu-icon {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--afx-text);
+  border-radius: 1px;
+  position: relative;
+  box-shadow:
+    0 -6px 0 var(--afx-text),
+    0 6px 0 var(--afx-text);
 }
 
 .afx-topbar__title {
   font-size: 16px;
   font-weight: 600;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .afx-topbar__spacer {
   flex: 1;
+  min-width: 8px;
+}
+
+.afx-topbar__actions {
+  display: contents;
 }
 
 .afx-topbar__user {
   position: relative;
+  min-width: 0;
 }
 
 .afx-topbar__user-btn {
   gap: 8px;
+  max-width: 100%;
+}
+
+.afx-topbar__user-btn span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 140px;
 }
 
 .afx-topbar__dropdown {
@@ -30,6 +68,7 @@
   right: 0;
   top: calc(100% + 6px);
   min-width: 220px;
+  max-width: min(280px, calc(100vw - 24px));
   background: var(--afx-bg-panel-elevated);
   border: 1px solid var(--afx-border);
   border-radius: var(--afx-radius);
@@ -52,6 +91,7 @@
   font-size: 12px;
   color: var(--afx-text-muted);
   font-family: var(--afx-font-mono);
+  word-break: break-all;
 }
 
 .afx-topbar__menu-item {
@@ -72,7 +112,51 @@
 
 .afx-topbar__modal-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
   margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .afx-topbar__menu {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .afx-topbar {
+    gap: 6px;
+    padding: 0 12px;
+  }
+
+  .afx-topbar__title {
+    font-size: 15px;
+  }
+
+  .afx-topbar .afx-btn--ghost:not(.afx-topbar__menu) {
+    min-width: 36px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .afx-topbar {
+    gap: 4px;
+    padding: 0 10px;
+  }
+
+  .afx-topbar__title {
+    font-size: 14px;
+  }
+
+  .afx-topbar__user-btn span:first-child {
+    display: none;
+  }
+
+  .afx-topbar .afx-btn--ghost:not(.afx-topbar__menu) {
+    padding: 0 8px;
+    font-size: 12px;
+  }
 }

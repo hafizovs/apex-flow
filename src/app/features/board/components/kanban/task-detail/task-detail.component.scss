@@ -134,3 +134,23 @@
   font-size: 11px;
   color: var(--afx-text-muted);
 }
+
+@media (max-width: 768px) {
+  .afx-detail {
+    width: 100%;
+    max-width: 100%;
+    border-left: none;
+  }
+
+  .afx-detail__header {
+    padding: 14px 16px;
+  }
+
+  .afx-detail__body {
+    padding: 16px;
+  }
+
+  .afx-detail__actions {
+    flex-wrap: wrap;
+  }
+}
