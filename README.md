@@ -25,6 +25,10 @@ ApexFlow is a Cyberpunk Minimal SaaS project board built with Angular 22 standal
 - Reset the demo as admin
 - Press `N` for a new task, `Space` / arrow keys / `Enter` to pick up and drop a focused card, and `Escape` to close overlays or cancel a drag
 
+## Responsive layout
+
+Partial adaptive chrome for phone (~375px) and tablet (~768px): toolbars and panels stack or collapse on narrow viewports, with no page-level horizontal scroll. Desktop-first cores (canvas, boards, dense tables) stay simplified on small screens rather than a full mobile redesign.
+
 ## Scripts
 
 ```bash
